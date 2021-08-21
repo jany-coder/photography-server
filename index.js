@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const { MongoClient } = require('mongodb');
@@ -24,7 +23,6 @@ client.connect(err => {
   
   app.post('/addBookings', (req, res) => {
       const booking = req.body;
-      console.log(booking)
       bookingsCollection.insertOne(booking)
       .then(result => {
           res.send(result.acknowledge = true)
